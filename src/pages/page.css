@@ -1,0 +1,27 @@
+/* layout */
+.wrapper {
+    display: flex;
+    flex-flow: column;
+    height: 95vh
+}
+
+.navBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex: 0 1 auto
+}
+.body{
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer{
+    flex: 0 1 auto;
+    display: flex;
+    justify-content: center;
+}
+body {
+    margin: 0;
+}

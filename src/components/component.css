@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+/* buttonStyle */
+.buttonContainer {
+    width: 500px;
+    padding: 4px;
+}
+.button {
+    color: orange;
+    background-color: #ffffff;
+    padding: 10px;
+    height: 50px;
+    border: 2px solid orange;
+    border-radius: 25px;
+    font-size: 20px;
+    width: 100%;
+    box-shadow: 0 2px 10px rgb(144, 144, 144);
+}
+.active {
+    border: none;
+    background-color: #ffa500;
+    color: white;
+}
+.active:hover {
+    background-color: #c37e00;
+}
+button:hover {
+    background-color: #f0f0f0;
+}
+
+/* codeInputStyle */
+#my-form {
+    display: flex;
+    flex-direction: row;
+    padding:10px;
+    height: 70px;
+  }
+  #my-form input,
+  #my-form button {
+    border-radius: 35px;
+    font-size: 40px;
+  }
+
+  #my-form input {
+    flex-grow: 2;
+    padding: 10px 70px 10px 35px;
+    border: none;
+    background-color: #D9D9D9;
+    box-shadow: 0px 2px 2px rgb(144, 144, 144);
+  }
+
+  #my-form button {
+    background: orange;
+    color: white;
+    border: none;
+    position: relative;
+    left: -70px;
+    width: 70px;
+    box-shadow: 0px 2px 10px rgb(144, 144, 144);
+  }
+
+  #my-form #unlock_profile {
+    width: 500px;
+    left: 0px;
+    }
+
+    #my-form #continue_search {
+        margin-left: 10px;
+        left: 0px;
+        }
+
+
+
+#my-form button:hover{
+    background-color: #c37e00;
+}
+#my-form input:focus-visible {
+    outline-color: orange;
+}
+
+/* profileSlideStyle */
+#profile-slider{
+    width: 1000px;
+    height: 500px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+#profile-slider .background {
+    border-radius: 50px;
+    border: 2px solid orange;
+    background-color: #e0dfdf;
+    width: 700px;
+    height: 100%;
+    position: relative;
+    left: -75px;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+#profile-slider .image {
+    border-radius: 25px;
+    background-color: #B8B8B8;
+    position:relative;
+    left: 75px;
+    width: 300px;
+    height: 400px;
+}
+#profile-slider .image img {
+    height: 100%;
+    width: 100%;
+    border-radius: 25px;
+}
+#profile-slider .content {
+    width: 500px;
+    height: 400px;
+}
+
+/* proflieContentStyle */
+#profile-content {
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    padding: 10px 0px;
+}
+
+h1 {
+    font-size: 30px;
+    margin: 1px 0;
+    font-weight: bold;
+    color: orange;
+}
+
+h2 {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.row-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.container {
+    padding-bottom: 20px;
+}
+.icon-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 2px 20px 2px 0px;
+}
+.icon-text text, .row-container h2{
+    padding-left: 10px;
+}
+.container .row-container {
+    width: 250px;
+    padding-top: 5px;
+}
+
+#profile-content li {
+    padding: 0px 0px 5px;
+}
+
+.question {
+    padding-bottom:5px;
+}
+
+/* Contact Modal */
+#contact-modal{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 1;
+}
+#contact-modal .modal{
+    position: fixed;
+    width: 300px;
+    height: 400px;
+    border-radius: 25px;
+    background-color: wheat;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -150px;
+    box-shadow: 0px 0px 20px rgb(10, 10, 10);
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+}
+#contact-modal .qr-code {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    height:fit-content;
+    text-align: center;
+}
+#contact-modal .tag {
+    padding-top: 10px;
+}
+
+#contact-modal button {
+    border-radius: 35px;
+    font-size: 30px;
+    background: orange;
+    color: white;
+    border: none;
+    position: relative;
+    box-shadow: 0px 2px 10px rgb(144, 144, 144);
+    width: 200px;
+    padding: 5px;
+}
+#contact-modal button:hover{
+    background-color: #c37e00;
+}
