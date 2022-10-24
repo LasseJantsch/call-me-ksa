@@ -4,7 +4,7 @@
         "last_name": "jantsch",
         "user_id": "1aae19b9-ef54-44e3-9072-1ac1f8d19255",
         "user_code": "X65F7D",
-        "uses_left": "3",
+        "uses_left": 3,
         "data": {
             "birthday": "20.10.1999",
             "nationality": "Germany",
@@ -29,7 +29,7 @@
             },
             "contact_detail": {
                 "kakao_id": "lassejantsch",
-                "instagram_id": "@lassejantsch"
+                "instagram_id": "lassejantsch"
             }
         }
     },
@@ -38,7 +38,7 @@
         "last_name": "sorensen",
         "user_id": "1aae19b9-ef54-44e3-9072-1ac1f8d19255",
         "user_code": "X65F7D",
-        "uses_left": "3",
+        "uses_left": 3,
         "data": {
             "birthday": "01.09.1997",
             "nationality": "Denmark",
@@ -63,7 +63,7 @@
             },
             "contact_detail": {
                 "kakao_id": "lassejantsch",
-                "instagram_id": "@lassejantsch"
+                "instagram_id": "mieksorensen"
             }
         }
     },
@@ -72,7 +72,7 @@
         "last_name": "sehm",
         "user_id": "1aae19b9-ef54-44e3-9072-1ac1f8d19255",
         "user_code": "X65F7D",
-        "uses_left": "3",
+        "uses_left": 3,
         "data": {
             "birthday": "24.10.2000",
             "nationality": "Germany",
@@ -95,7 +95,207 @@
             },
             "contact_detail": {
                 "kakao_id": "lassejantsch",
-                "instagram_id": "@lassejantsch"
+                "instagram_id": "annalena.sehm"
+            }
+        }
+    },
+    {
+        "first_name": "lasse",
+        "last_name": "jantsch1",
+        "user_id": "1aae19b9-ef54-44e3-9072-1ac1f8d19255",
+        "user_code": "X65F7D",
+        "uses_left": 3,
+        "data": {
+            "birthday": "20.10.1999",
+            "nationality": "Germany",
+            "MBTI": "ENFP",
+            "hobbies": [
+                "Judo",
+                "Cooking",
+                "Hanging out with friends"
+            ],
+            "languages": [
+                "German",
+                "English",
+                "French"
+            ],
+            "question_1": {
+                "question": "Would you rather fight 100 duck size horses or one horse size duck?",
+                "answer": "100 Duck size horses. They dont pose any thread to me"
+            },
+            "question_2": {
+                "question": "Pepsi or cock?",
+                "answer": "really like pussy :)"
+            },
+            "contact_detail": {
+                "kakao_id": "lassejantsch",
+                "instagram_id": "lassejantsch"
+            }
+        }
+    },
+    {
+        "first_name": "mie",
+        "last_name": "sorensen1",
+        "user_id": "1aae19b9-ef54-44e3-9072-1ac1f8d19255",
+        "user_code": "X65F7D",
+        "uses_left": 3,
+        "data": {
+            "birthday": "01.09.1997",
+            "nationality": "Denmark",
+            "MBTI": "ENFP",
+            "hobbies": [
+                "Looking good",
+                "Walking home",
+                "Soccer"
+            ],
+            "languages": [
+                "German",
+                "Denish",
+                "English"
+            ],
+            "question_1": {
+                "question": "What is your favorite Cafe in Deagu?",
+                "answer": "Cafe rut"
+            },
+            "question_2": {
+                "question": "What is your favorite Halloween Costume?",
+                "answer": "Once I dressed up as Lasse. I really liked that"
+            },
+            "contact_detail": {
+                "kakao_id": "lassejantsch",
+                "instagram_id": "mieksorensen"
+            }
+        }
+    },
+    {
+        "first_name": "annalena",
+        "last_name": "sehm1",
+        "user_id": "1aae19b9-ef54-44e3-9072-1ac1f8d19255",
+        "user_code": "X65F7D",
+        "uses_left": 3,
+        "data": {
+            "birthday": "24.10.2000",
+            "nationality": "Germany",
+            "MBTI": "ENFP",
+            "hobbies": [
+                "Fashion",
+                "Acrobatics"
+            ],
+            "languages": [
+                "German",
+                "English"
+            ],
+            "question_1": {
+                "question": "What would a warning sign say?",
+                "answer": "Attention: This is a really funny person!"
+            },
+            "question_2": {
+                "question": "What is your favorite Cafe in Deagu?",
+                "answer": "I really like the Cafe in the library. I study there all the time."
+            },
+            "contact_detail": {
+                "kakao_id": "lassejantsch",
+                "instagram_id": "annalena.sehm"
+            }
+        }
+    },
+    {
+        "first_name": "lasse",
+        "last_name": "jantsch2",
+        "user_id": "1aae19b9-ef54-44e3-9072-1ac1f8d19255",
+        "user_code": "X65F7D",
+        "uses_left": 3,
+        "data": {
+            "birthday": "20.10.1999",
+            "nationality": "Germany",
+            "MBTI": "ENFP",
+            "hobbies": [
+                "Judo",
+                "Cooking",
+                "Hanging out with friends"
+            ],
+            "languages": [
+                "German",
+                "English",
+                "French"
+            ],
+            "question_1": {
+                "question": "Would you rather fight 100 duck size horses or one horse size duck?",
+                "answer": "100 Duck size horses. They dont pose any thread to me"
+            },
+            "question_2": {
+                "question": "Pepsi or cock?",
+                "answer": "really like pussy :)"
+            },
+            "contact_detail": {
+                "kakao_id": "lassejantsch",
+                "instagram_id": "lassejantsch"
+            }
+        }
+    },
+    {
+        "first_name": "mie",
+        "last_name": "sorensen2",
+        "user_id": "1aae19b9-ef54-44e3-9072-1ac1f8d19255",
+        "user_code": "X65F7D",
+        "uses_left": 3,
+        "data": {
+            "birthday": "01.09.1997",
+            "nationality": "Denmark",
+            "MBTI": "ENFP",
+            "hobbies": [
+                "Looking good",
+                "Walking home",
+                "Soccer"
+            ],
+            "languages": [
+                "German",
+                "Denish",
+                "English"
+            ],
+            "question_1": {
+                "question": "What is your favorite Cafe in Deagu?",
+                "answer": "Cafe rut"
+            },
+            "question_2": {
+                "question": "What is your favorite Halloween Costume?",
+                "answer": "Once I dressed up as Lasse. I really liked that"
+            },
+            "contact_detail": {
+                "kakao_id": "lassejantsch",
+                "instagram_id": "mieksorensen"
+            }
+        }
+    },
+    {
+        "first_name": "annalena",
+        "last_name": "sehm2",
+        "user_id": "1aae19b9-ef54-44e3-9072-1ac1f8d19255",
+        "user_code": "X65F7D",
+        "uses_left": 3,
+        "data": {
+            "birthday": "24.10.2000",
+            "nationality": "Germany",
+            "MBTI": "ENFP",
+            "hobbies": [
+                "Fashion",
+                "Acrobatics"
+            ],
+            "languages": [
+                "German",
+                "English"
+            ],
+            "question_1": {
+                "question": "What would a warning sign say?",
+                "answer": "Attention: This is a really funny person!"
+            },
+            "question_2": {
+                "question": "What is your favorite Cafe in Deagu?",
+                "answer": "I really like the Cafe in the library. I study there all the time."
+            },
+            "contact_detail": {
+                "kakao_id": "lassejantsch",
+                "instagram_id": "annalena.sehm"
             }
         }
     }

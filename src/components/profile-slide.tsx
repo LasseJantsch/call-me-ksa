@@ -13,47 +13,41 @@ import * as helpers from "../common/helpers"
 
 
 interface profileSlideProps {
+    profile: any,
+    visible: boolean,
 }
 
 export default function ProfileSlide({
-
+    profile,
+    visible
 }: profileSlideProps) {
 
     const [img, setImg] = useState(null)
-    const [index, setIndex] = useState(0)
-    const [profileData, setProfileData] = useState([])
-    const [currentProfile, setCurrentProfile] = useState({})
+    // const [index, setIndex] = useState(0)
+    // const [profileData, setProfileData] = useState([])
+    // const [currentProfile, setCurrentProfile] = useState({})
+    // const [timer, setTimer] = useState(true)
 
-    const isLoading = !currentProfile || !img
+    const isLoading = !profile || !img
     
-    useEffect(()=>{
-        const fetchData = async () => {
-            try {
-                const response = await import("../data/international.json")
-                setProfileData(response.default)
-                console.log(response.default)
-            } catch (err) {
-                console.log(err)
-            } 
-        }
-        fetchData()
-    }, [])
-
-    useEffect(()=>{
-        if(profileData[index] === undefined) return
-        setCurrentProfile(profileData[index])
-        // console.log(profileData[index])
-    }, [profileData, index])
+    // useEffect(()=>{
+    //     if(profileData[index] === undefined) return
+    //     setCurrentProfile(profileData[index])
+    //     // console.log(profileData[index])
+    // }, [profileData, index])
     
     useEffect(() => {
-        if(currentProfile === undefined) return
+        if(profile === undefined) return
         // console.log(currentProfile)
-        helpers.importImg(currentProfile, setImg)
-    }, [currentProfile])
+        helpers.importImg(profile, setImg)
+    }, [profile])
 
     // useEffect(()=>{
-    //     setTimeout(()=> {index<profileData.length ? setIndex(index+1) : setIndex(0)}, 10*1000 )
-    // }, [index])
+    //     while(timer === true) {
+    //         console.log("triggered")
+    //         setTimeout(()=> {index<profileData.length ? setIndex(index+1) : setIndex(0)}, 5*1000 )
+    //     }
+    // })
 
 
     return(
@@ -63,11 +57,11 @@ export default function ProfileSlide({
                     Is loading...
                 </div>
                 :
-                <div id="profile-slider">
+                <div id="profile-slider"  className={visible?"fadeIn":"fadeOut"}>
                     <div className="background">
                         <div className="content">
                             <ProfileContent 
-                                profile = {currentProfile}
+                                profile = {profile}
                             />
                         </div>
                     </div>

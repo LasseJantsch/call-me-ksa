@@ -4,21 +4,27 @@ import QRCode from "react-qr-code";
 import "./component.css"
 
 interface ContactModalProbs {
-    instagram_id: string,
+    contactData: any,
     onClick: any
 }
 
 export default function ContactModal({
-    instagram_id,
+    contactData,
     onClick,
 }: ContactModalProbs) {
 
     return(
         <div id="contact-modal">
             <div className="modal">
-                <div className="qr-code">
-                    <QRCode value={`https://www.instagram.com/${instagram_id}`} />
-                    <h2 className="tag">Instagram: @{instagram_id} </h2>
+                <div className="qr-code-container">
+                    <div className="qr-code">
+                        <QRCode value={`https://www.instagram.com/${contactData.instagram_id}`} />
+                        <h2 className="tag">Instagram: @{contactData.instagram_id} </h2>
+                    </div>
+                    <div className="qr-code">
+                        <QRCode value={`https://www.instagram.com/${contactData.kakao_id}`} />
+                        <h2 className="tag">Kakao: {contactData.instagram_id} </h2>
+                    </div>
                 </div>
                 <button
                     onClick={()=>onClick(false)}

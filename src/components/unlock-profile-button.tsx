@@ -25,7 +25,7 @@ export default function UnlockProfileButton({
             id="continue_search"
              onClick={(e)=>{
                 e.preventDefault()
-                continueSearch(false)
+                continueSearch()
             }}            
             >x</button>
         </form>
