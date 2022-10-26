@@ -14,11 +14,11 @@ export default function ProfileContent({
     profile,
 }:profileContentProps) {
 
-    const data = profile.data
+    const data = profile
     
     return(
         <div id="profile-content">
-            <h1>{`${profile.first_name.charAt(0).toUpperCase() + profile.first_name.slice(1)} ${profile.last_name.charAt(0).toUpperCase() + profile.last_name.slice(1)}`}</h1>
+            <h1>{`${data.first_name} ${data.last_name}`}</h1>
             <div className="row-container container">
                 <div className="icon-text">
                     <CakeIcon fontSize="small" sx={{color:"#4E4E4E"}}/>
@@ -30,7 +30,7 @@ export default function ProfileContent({
                 </div>
                 <div className="icon-text">
                     <AccountCircleIcon fontSize="small" sx={{color:"#4E4E4E"}}/>
-                    <text>{data.MBTI}</text>
+                    <text>{data.mbti}</text>
                 </div>
             </div>
             <div className="row-container container">
@@ -41,11 +41,9 @@ export default function ProfileContent({
                     </div>
                     <div>
                         <ul>
-                            {data.hobbies.map((e)=>{
-                                return(
-                                    <li>{e}</li>
-                                )
-                            })}
+                            {data.hobbie_1 !== "" && <li>{data.hobbie_1}</li>}
+                            {data.hobbie_2 !== "" && <li>{data.hobbie_2}</li>}
+                            {data.hobbie_3 !== "" && <li>{data.hobbie_3}</li>}
                         </ul>
                     </div>
                 </div>
@@ -56,29 +54,27 @@ export default function ProfileContent({
                     </div>
                     <div>
                         <ul>
-                        {data.languages.map((e)=>{
-                                return(
-                                    <li>{e}</li>
-                                )
-                            })}
+                            {data.language_1 !== "" && <li>{data.language_1}</li>}
+                            {data.language_2 !== "" && <li>{data.language_2}</li>}
+                            {data.language_3 !== "" && <li>{data.language_3}</li>}
                         </ul>
                     </div>
                 </div>
             </div>
             <div className="container">
                 <div>
-                    <h2 className="question">{data.question_1.question}</h2>
+                    <h2 className="question">{data.question_1}</h2>
                 </div>
                 <div>
-                {data.question_1.answer}
+                {data.answer_1}
                 </div>
             </div>
             <div className="container">
                 <div>
-                    <h2 className="question">{data.question_2.question}</h2>
+                    <h2 className="question">{data.question_2}</h2>
                 </div>
                 <div>
-                   {data.question_2.answer}
+                   {data.answer_1}
                 </div>
             </div>
         </div>

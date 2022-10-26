@@ -18,11 +18,11 @@ export default function ContactModal({
             <div className="modal">
                 <div className="qr-code-container">
                     <div className="qr-code">
-                        <QRCode value={`https://www.instagram.com/${contactData.instagram_id}`} />
+                        <QRCode value={`https://www.instagram.com/${contactData.contact_insta}`} />
                         <h2 className="tag">Instagram: @{contactData.instagram_id} </h2>
                     </div>
                     <div className="qr-code">
-                        <QRCode value={`https://www.instagram.com/${contactData.kakao_id}`} />
+                        <QRCode value={`https://www.instagram.com/${contactData.contact_kakao}`} />
                         <h2 className="tag">Kakao: {contactData.instagram_id} </h2>
                     </div>
                 </div>

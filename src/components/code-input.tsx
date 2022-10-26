@@ -6,10 +6,12 @@ import "./component.css"
 
 interface codeInputProps {
     onClick: any,
+    disable: boolean,
 }
 
 export default function CodeInput({
     onClick,
+    disable
 }: codeInputProps) {
 
     const [input, setInput] = useState("")
@@ -18,6 +20,7 @@ export default function CodeInput({
         <form id="my-form">
             <input 
             type="text" 
+            disabled = {disable}
             value={input}
             onChange={(e)=> setInput(e.target.value)}
             />

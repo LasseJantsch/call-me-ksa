@@ -1,11 +1,13 @@
 
+import * as React from "react"
+import no_picture from "../images/no_picture.jpg"
 
 export async function importImg(profile:any, setImg:any) {
     try {
-        const response = await import('../images/'+ profile.first_name +"_" + profile.last_name +".jpg")
+        const response = await import('../images/'+ profile.user_code +".jpg")
         setImg(response.default)
     } catch (err) {
-        console.log(err)
+        setImg(no_picture)
     } 
 }
 
