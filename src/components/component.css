@@ -104,10 +104,10 @@ button:hover {
     flex-direction: row-reverse;
     align-items: center;
 }
-#profile-slider .background {
+#profile-slider .background_2 {
     border-radius: 50px;
     border: 2px solid orange;
-    background-color: #ffffff;
+    background-color: #ffffffd3;
     width: 700px;
     height: 100%;
     position: relative;

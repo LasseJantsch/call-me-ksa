@@ -58,7 +58,7 @@ export default function ProfileSlide({
                 </div>
                 :
                 <div id="profile-slider"  className={visible?"fadeIn":"fadeOut"}>
-                    <div className="background">
+                    <div className="background_2">
                         <div className="content">
                             <ProfileContent 
                                 profile = {profile}

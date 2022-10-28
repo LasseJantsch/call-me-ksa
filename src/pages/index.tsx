@@ -19,6 +19,7 @@ import "slick-carousel/slick/slick-theme.css";
 import IconButton from "../components/icon-button"
 import LoadingAnimation from "../components/loading.animation"
 import MessageModal from "../components/message-modal"
+import halloween from "../images/halloween.png"
 
 
 
@@ -65,6 +66,7 @@ export default function Home() {
       },
       ()=>{
         setIsLoading(false)
+        setSearchProfiles(profileData)
       }
     )
 }, [])
@@ -80,7 +82,7 @@ useEffect(()=>{
     setSearchProfiles(profileData)
     console.log("all")
   }
-}, [active])
+}, [active, isLoading])
 
 let timer
 
@@ -97,7 +99,7 @@ let timer
             setTimeout(() => {
               setSearchProfiles(last => last)
               console.log(searchProfiles)
-              setIndex(helpers.giveRandomeUserIndex(searchProfiles))
+              setIndex(helpers.giveRandomeUserIndex(searchProfiles, profileData))
             }, 0.7 * 1000);
             setTimeout(()=>{
               setVisible(true) 
@@ -120,9 +122,9 @@ let timer
         console.log(err)
       },
       ()=>{
+        setDisable(false)
           setTimeout(()=>{
             setError(false)
-            setDisable(false)
           }, 5 * 1000)
         }
        )
@@ -167,6 +169,8 @@ useEffect(() => {
 
 
   return(
+    <>
+    <img className="background" src={halloween} alt="halloween" />
     <div
       className="wrapper"
     >
@@ -200,5 +204,6 @@ useEffect(() => {
       </div>
 
     </div>
+    </>
   )
 }

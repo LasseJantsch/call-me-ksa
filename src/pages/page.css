@@ -2,8 +2,12 @@
 
 /* layout */
 .wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
     display: flex;
     flex-flow: column;
+    width: 100%;
     height: 95vh
 }
 
@@ -38,4 +42,9 @@ body {
     font-family: 'Inter', sans-serif;
     background-color: rgb(244, 244, 244);
 
+}
+.background{
+    width: 100%;
+    height: 100%;
+    position: absolute;
 }

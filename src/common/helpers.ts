@@ -16,8 +16,10 @@ export function createUserName(profile) {
     return userName
 }
 
-export function giveRandomeUserIndex(profiles,) {
-   return Math.floor(Math.random() * (profiles.length))
+export function giveRandomeUserIndex(profiles, allProfiles) {
+   const i = Math.floor(Math.random() * (profiles.length))
+   console.log(profiles, allProfiles, i)
+   return allProfiles.findIndex((element) => element === profiles[i])
 }
 
 function capitalizeFirstLetter(string) {
