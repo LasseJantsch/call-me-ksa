@@ -34,6 +34,8 @@ button:hover {
     flex-direction: row;
     padding:10px;
     height: 70px;
+    position: relative;
+    left: 35px;
   }
   #my-form input,
   #my-form button {
@@ -45,18 +47,30 @@ button:hover {
     flex-grow: 2;
     padding: 10px 70px 10px 35px;
     border: none;
-    background-color: #D9D9D9;
     box-shadow: 0px 2px 2px rgb(144, 144, 144);
   }
 
   #my-form button {
     background: orange;
-    color: white;
     border: none;
     position: relative;
     left: -70px;
     width: 70px;
-    box-shadow: 0px 2px 10px rgb(144, 144, 144);
+    box-shadow: 0px 0px 4px rgb(144, 144, 144);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  #my-form button img {
+    color: white;
+    width: 100%;
+    position: relative;
+    left: 2px;
+  }
+
+  #my-form #continue_search img {
+    left: 0
   }
 
   #my-form #unlock_profile {
@@ -72,7 +86,11 @@ button:hover {
 
 
 #my-form button:hover{
-    background-color: #c37e00;
+    background-color: #ed9a00;
+}
+#my-form button:active{
+    background-color: #ed9a00;
+    box-shadow: none;
 }
 #my-form input:focus-visible {
     outline-color: orange;
@@ -89,7 +107,7 @@ button:hover {
 #profile-slider .background {
     border-radius: 50px;
     border: 2px solid orange;
-    background-color: #f2f2f2;
+    background-color: #ffffff;
     width: 700px;
     height: 100%;
     position: relative;
@@ -97,6 +115,8 @@ button:hover {
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
+    box-shadow: 0px 0px 5px rgb(144, 144, 144);
+
 }
 #profile-slider .image {
     border-radius: 25px;
@@ -144,6 +164,7 @@ h2 {
     font-size: 14px;
     font-weight: bold;
     margin: 0px;
+    color: #000;
 }
 
 .row-container {
@@ -192,7 +213,7 @@ h2 {
     /* width: 300px;
     height: 400px; */
     border-radius: 25px;
-    background-color: wheat;
+    background-color: rgb(249, 227, 185);
     /* top: 50%;
     left: 50%;
     margin-top: -50%;
@@ -202,11 +223,25 @@ h2 {
     flex-direction:column;
     align-items: center;
     justify-content: space-around;
-    padding: 10px;
+    padding: 30px 0px 10px;
 }
+
 #contact-modal .qr-code-container {
     display: flex;
-    flex-direction: row ;
+    flex-direction: column;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+
+}
+#contact-modal .modal-header {
+    height: 50px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 10px rgb(10, 10, 10, 0.2);
 }
 
 #contact-modal .qr-code {
@@ -216,9 +251,10 @@ h2 {
     height:fit-content;
     text-align: center;
     margin: 10px;
+    width: 90%;
 }
-#contact-modal .tag {
-    padding-top: 10px;
+#contact-modal .qr {
+    padding-bottom: 10px;
 }
 
 #contact-modal button {
@@ -236,3 +272,120 @@ h2 {
 #contact-modal button:hover{
     background-color: #c37e00;
 }
+
+/* Icon Button */
+.icon_button_container {
+    width: 160px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.icon_button {
+    width: 65px;
+    height: 65px;
+    border-radius: 35px;
+    border: grey solid 2px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 5px rgb(144, 144, 144);
+
+}
+.icon_button:hover {
+    border: orange solid 2px;
+    background-color: rgb(248, 248, 248);
+}
+
+.active {
+    border: none; 
+    background-color: orange;
+}
+
+.active:hover {
+    border: none;
+    background-color: #f39e00;
+}
+
+
+#korea-icon{
+    width: 80%;
+}
+#intern-icon{
+    width: 70%;
+}
+
+/*Loading Animation */
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: orange transparent transparent transparent;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Message Modal */
+  .message_modal {
+    position: absolute;
+    height: 20px;
+    z-index: 2;
+    top: -45px;
+    left: 20px;
+    width: fit-content;
+  }
+  .modal {
+    background-color: rgb(224, 2, 2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgb(0,0,0,0.5);
+    width: fit-content;
+  }
+  .success {
+    background-color: green !important;
+  }
+  .slide_in {
+    top: 20px;
+    transition: top 0.5s;
+  }
+  .slide_out {
+    top: -45px;
+    transition: top 0.5s;
+  }
+
+  .modal div {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+  }

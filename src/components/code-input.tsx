@@ -3,6 +3,7 @@ import {
     useState
 } from "react"
 import "./component.css"
+import arrow_right from "../icons/arrow-right.svg"
 
 interface codeInputProps {
     onClick: any,
@@ -11,7 +12,7 @@ interface codeInputProps {
 
 export default function CodeInput({
     onClick,
-    disable
+    disable,
 }: codeInputProps) {
 
     const [input, setInput] = useState("")
@@ -30,7 +31,7 @@ export default function CodeInput({
                     onClick(input)
                     setInput("")
                 }}
-            >{`>`}</button>
+            ><img src={arrow_right} alt="arrow-right"/></button>
         </form>
     )
 }

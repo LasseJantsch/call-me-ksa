@@ -16,6 +16,10 @@ export function createUserName(profile) {
     return userName
 }
 
+export function giveRandomeUserIndex(profiles,) {
+   return Math.floor(Math.random() * (profiles.length))
+}
+
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }

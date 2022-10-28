@@ -15,6 +15,16 @@ export default function ProfileContent({
 }:profileContentProps) {
 
     const data = profile
+    function findQuestion(index) {
+        if(index==="1") return "Would you rather fight 100 ducksize horses or one horse size duck?"
+        if(index==="2") return "What is your favorite Halloween costume?"
+        if(index==="3") return "What sports did you never do but really want to try?"
+        if(index==="4") return "What is your favorite cafe in Deagu"
+        if(index==="5") return "How many pillows do you sleep with?"
+        if(index==="6") return "If you had a warning label, what would it say?"
+        if(index==="7") return "What is your favorite music artist/group?"
+        if(index==="8") return "What animal would you be?"
+    }
     
     return(
         <div id="profile-content">
@@ -22,15 +32,15 @@ export default function ProfileContent({
             <div className="row-container container">
                 <div className="icon-text">
                     <CakeIcon fontSize="small" sx={{color:"#4E4E4E"}}/>
-                    <text>{data.birthday}</text>
+                    <div>{data.birthday}</div>
                 </div>
                 <div className="icon-text">
                     <PublicIcon fontSize="small" sx={{color:"#4E4E4E"}}/>
-                    <text>{data.nationality}</text>
+                    <div>{data.nationality}</div>
                 </div>
                 <div className="icon-text">
                     <AccountCircleIcon fontSize="small" sx={{color:"#4E4E4E"}}/>
-                    <text>{data.mbti}</text>
+                    <div>{data.mbti}</div>
                 </div>
             </div>
             <div className="row-container container">
@@ -41,9 +51,9 @@ export default function ProfileContent({
                     </div>
                     <div>
                         <ul>
-                            {data.hobbie_1 !== "" && <li>{data.hobbie_1}</li>}
-                            {data.hobbie_2 !== "" && <li>{data.hobbie_2}</li>}
-                            {data.hobbie_3 !== "" && <li>{data.hobbie_3}</li>}
+                            {data.hobby_1 !== "" && <li>{data.hobby_1}</li>}
+                            {data.hobby_2 !== "" && <li>{data.hobby_2}</li>}
+                            {data.hobby_3 !== "" && <li>{data.hobby_3}</li>}
                         </ul>
                     </div>
                 </div>
@@ -63,7 +73,7 @@ export default function ProfileContent({
             </div>
             <div className="container">
                 <div>
-                    <h2 className="question">{data.question_1}</h2>
+                    <h2 className="question">{findQuestion(data.question_1)}</h2>
                 </div>
                 <div>
                 {data.answer_1}
@@ -71,10 +81,10 @@ export default function ProfileContent({
             </div>
             <div className="container">
                 <div>
-                    <h2 className="question">{data.question_2}</h2>
+                    <h2 className="question">{findQuestion(data.question_2)}</h2>
                 </div>
                 <div>
-                   {data.answer_1}
+                   {data.answer_2}
                 </div>
             </div>
         </div>

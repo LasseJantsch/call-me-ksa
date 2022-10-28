@@ -1,7 +1,8 @@
 import * as React from "react"
 import {
   useState,
-  useEffect
+  useEffect,
+  useRef
 } from "react"
 import UnlockProfileButton from "../components/unlock-profile-button"
 import ContactModal from "../components/contactModal"
@@ -15,7 +16,9 @@ import * as api from "../common/api"
 import "./page.css"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import IconButton from "../components/icon-button"
+import LoadingAnimation from "../components/loading.animation"
+import MessageModal from "../components/message-modal"
 
 
 
@@ -23,18 +26,23 @@ export default function Home() {
 
   const [international, setInternational] = useState(false)
   const [unlockProfile, setUnlockProfile] = useState(false)
-  const [showContactDetails, setShowContactDetails] = useState(false)
+  const [showDetails, setShowDetails] = useState(false)
   const [profileData, setProfileData] = useState([])
+  const [koreanProfiles, setKoreanProfiles] = useState([])
+  const [internationalProfiles, setInternationalProfiles] = useState([])
+  const [searchProfiles, setSearchProfiles] = useState([])
+
   const [currentProfile, setCurrentProfile] = useState({})
   const [isLoading, setIsLoading] = useState(false)
   const [visible, setVisible] = useState(true)
   const [autoChange, setAutoChange] = useState(true)
-  const [unlockRespose, setUnlockResponse] = useState(null)
+  const [unlockRespose, setUnlockResponse] = useState(-2)
   const [startAutoChange, setStartAutoChange] = useState(true)
   const [error, setError] = useState(false)
   const [errorText, setErrorText] = useState("")
   const [index, setIndex] = useState(0)
   const [disable, setDisable] = useState(false)
+  const [active, setActive] = useState(null)
   const settings = {
     dots: true,
     infinite: true,
@@ -48,8 +56,9 @@ export default function Home() {
     setIsLoading(true)
     api.getAllProfiles(
       (result)=> {
-        console.log(result.data)
         setProfileData(result.data)
+        setInternationalProfiles(result.data.filter((obj)=>{ return obj.nationality!=="Korean"}))
+        setKoreanProfiles(result.data.filter((obj)=>{return obj.nationality==="Korean"}))
       },
       (error) => {
         console.log(error)
@@ -60,63 +69,77 @@ export default function Home() {
     )
 }, [])
 
+useEffect(()=>{
+  if(active==="korea") {
+    setSearchProfiles(koreanProfiles)
+    console.log("korea")
+  } else if(active==="intern"){
+    setSearchProfiles(internationalProfiles)
+    console.log("international")
+  } else {
+    setSearchProfiles(profileData)
+    console.log("all")
+  }
+}, [active])
+
 let timer
 
+  function checkCodeInput(input) {
+    if(input==="") return
+    setDisable(true)
+    api.checkUserCode(
+      input,
+      (result)=>{
+          console.log(result.data.response)
+          if(result.data.response > 0) {
+            setAutoChange(false)
+            setVisible(false)
+            setTimeout(() => {
+              setSearchProfiles(last => last)
+              console.log(searchProfiles)
+              setIndex(helpers.giveRandomeUserIndex(searchProfiles))
+            }, 0.7 * 1000);
+            setTimeout(()=>{
+              setVisible(true) 
+              setUnlockProfile(true)
+            }, 2 * 1000 )
+          } else if(result.data.response === 0) {
+            setErrorText("No uses left :(")
+            setTimeout(
+              ()=>setError(true), 1000
+            )
+          } else if(result.data.response === -1) {
+            setErrorText("This code doesnt exist!")
+            setError(true)
+          } else {
+            setErrorText("Something went wrong")
+            setError(true)
+          }
+      },
+      (err)=>{
+        console.log(err)
+      },
+      ()=>{
+          setTimeout(()=>{
+            setError(false)
+            setDisable(false)
+          }, 5 * 1000)
+        }
+       )
+  }
+  
+  function handleContinueSearch() {
+    setVisible(false)
+    setUnlockProfile(false)
+    setTimeout(()=>{
+      setIndex(Math.floor(Math.random() * (profileData.length)))
+    }, 0.7 * 1000 )
+    setTimeout(()=>{
+      setVisible(true) 
+      setAutoChange(true)
+    }, 2 * 1000 )
+  }  
 
-function checkCodeInput(input) {
-  if(input==="") return
-  setDisable(true)
-  api.checkUserCode(
-    input,
-    (result)=>{
-      if(result.data.usercode === input) {
-        console.log(result.data)
-        setUnlockResponse(result.data.response)
-      }
-    },
-    (err)=>{
-      console.log(err)
-    },
-    ()=>{
-      if(unlockRespose > 0) {
-        console.log("worked well: " + unlockRespose)
-        setAutoChange(false)
-        setVisible(false)
-        setTimeout(() => {
-          setIndex(Math.floor(Math.random() * (profileData.length)))
-        }, 0.7 * 1000);
-        setTimeout(()=>{
-          setVisible(true) 
-          setUnlockProfile(true)
-        }, 2 * 1000 )
-      } else if(unlockRespose === 0) {
-        console.log("no uses left: " + unlockRespose)
-        setError(true)
-      } else if(unlockRespose === -1) {
-        console.log("code doesnt exist: " + unlockRespose)
-        setError(true)
-      } else {
-        console.log("something is wrong with the response: " + unlockRespose)
-      }
-      setTimeout(()=>{
-        setError(false)
-        setDisable(false)
-      }, 5 * 1000)
-    }
-  )
-}
-
-function handleContinueSearch() {
-  setVisible(false)
-  setUnlockProfile(false)
-  setTimeout(()=>{
-    setIndex(Math.floor(Math.random() * (profileData.length)))
-  }, 0.7 * 1000 )
-  setTimeout(()=>{
-    setVisible(true) 
-    setAutoChange(true)
-  }, 2 * 1000 )
-}
 
 const updateIndex = () => {
   timer = !timer && setInterval(() => {
@@ -147,35 +170,30 @@ useEffect(() => {
     <div
       className="wrapper"
     >
-      {showContactDetails &&
-        <ContactModal contactData={profileData[index]} onClick={setShowContactDetails}/>
+      <MessageModal 
+        visible={error} 
+        message_text={errorText}
+       />
+      {showDetails &&
+        <ContactModal profileData={profileData[index]} onClick={setShowDetails}/>
       }
       <div className="navBar">
-        <Button
-          lable="Korean"
-          active = {!international}
-          onClick={()=>{setAutoChange(false)}}
-        />
-        <Button
-          lable="International"
-          active = {international}
-          onClick={()=>{setVisible(!visible)}}
-        />
       </div>
       <div className="body">
           {
             isLoading ?
-            <div>Loading</div>
+            <LoadingAnimation/>
             :
             <ProfileSlide profile={profileData[index]} visible={visible}/>          
           }
       </div>
       <div className="footer">
-        {error && 
-          <div className="error">The Code didn't work</div>
-        }
+        <IconButton 
+          active={active}
+          setActive={setActive}
+        />
         {unlockProfile?
-          <UnlockProfileButton openModal={setShowContactDetails} continueSearch={handleContinueSearch}/>
+          <UnlockProfileButton openModal={setShowDetails} continueSearch={handleContinueSearch}/>
         :
           <CodeInput onClick={checkCodeInput} disable={disable}/>
         }

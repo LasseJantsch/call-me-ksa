@@ -1,5 +1,7 @@
 import * as React from "react"
 import "./component.css"
+import cancle_icon from "../icons/cancle.svg"
+
 
 interface UnlockProfileButtonProbs {
     openModal: any,
@@ -27,7 +29,7 @@ export default function UnlockProfileButton({
                 e.preventDefault()
                 continueSearch()
             }}            
-            >x</button>
+            ><img src={cancle_icon} alt="cancle" /></button>
         </form>
     )
 }
