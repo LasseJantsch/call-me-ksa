@@ -20,6 +20,9 @@ import IconButton from "../components/icon-button"
 import LoadingAnimation from "../components/loading.animation"
 import MessageModal from "../components/message-modal"
 import halloween from "../images/halloween.png"
+import arrow_right from "../icons/arrow-right.svg"
+import arrow_left from "../icons/arrow-left.svg"
+
 
 
 
@@ -44,13 +47,8 @@ export default function Home() {
   const [index, setIndex] = useState(0)
   const [disable, setDisable] = useState(false)
   const [active, setActive] = useState(null)
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  }
+  const [recentlySwitched, setRecentlySwitched] = useState(false)
+  
 
 
   useEffect(()=>{
@@ -60,6 +58,7 @@ export default function Home() {
         setProfileData(result.data)
         setInternationalProfiles(result.data.filter((obj)=>{ return obj.nationality!=="Korean"}))
         setKoreanProfiles(result.data.filter((obj)=>{return obj.nationality==="Korean"}))
+        console.log(result.data.length)
       },
       (error) => {
         console.log(error)
@@ -93,7 +92,7 @@ let timer
       input,
       (result)=>{
           console.log(result.data.response)
-          if(result.data.response > 0) {
+          if(result.data.response >= 0) {
             setAutoChange(false)
             setVisible(false)
             setTimeout(() => {
@@ -105,11 +104,11 @@ let timer
               setVisible(true) 
               setUnlockProfile(true)
             }, 2 * 1000 )
-          } else if(result.data.response === 0) {
-            setErrorText("No uses left :(")
-            setTimeout(
-              ()=>setError(true), 1000
-            )
+          // } else if(result.data.response === 0) {
+          //   setErrorText("No uses left :(")
+          //   setTimeout(
+          //     ()=>setError(true), 1000
+          //   )
           } else if(result.data.response === -1) {
             setErrorText("This code doesnt exist!")
             setError(true)
@@ -159,12 +158,56 @@ const updateIndex = () => {
   )
 }
 
+let timeout
+function handleSwitchNext(){
+  setRecentlySwitched(true)
+  setAutoChange(false)
+  setVisible(false)
+  setDisable(true)
+  setTimeout(()=>{
+    setIndex(prev=> prev<profileData.length-1? prev+1 : 0) 
+  }, 0.7 *1000)
+  setTimeout(()=>{
+    setVisible(true)
+    setDisable(false)
+    timeout = setTimeout(()=>setRecentlySwitched(false), 10*1000)
+    }, 2 *1000) 
+}
+
+function handleSwitchBack(){
+  setRecentlySwitched(true)  
+  setAutoChange(false)
+  setVisible(false)
+  setDisable(true)
+  setTimeout(()=>{
+    setIndex(prev=> prev===0? profileData.length-1: prev -1) 
+  }, 0.7 *1000)
+  setTimeout(()=>{
+    setVisible(true)
+    setDisable(false)
+    timeout = setTimeout(()=>setRecentlySwitched(false), 10*1000)
+    }, 2 *1000) 
+}
+
+
+useEffect(()=>{
+  console.log(recentlySwitched)
+  if(recentlySwitched === true) {
+    setAutoChange(false)
+  }
+  else{
+    setAutoChange(true)
+  }
+}, [recentlySwitched])
+
+
 useEffect(() => {
   updateIndex()
   console.log(index)
 
   return () => clearInterval(timer)
 }, [index, autoChange, profileData])
+
 
 
 
@@ -184,12 +227,22 @@ useEffect(() => {
       <div className="navBar">
       </div>
       <div className="body">
-          {
-            isLoading ?
-            <LoadingAnimation/>
-            :
-            <ProfileSlide profile={profileData[index]} visible={visible}/>          
-          }
+      {isLoading ?
+        <LoadingAnimation/>:
+        <div className="body">
+          {!unlockProfile && 
+          <div className="switch_button"><button 
+            onClick={()=>handleSwitchBack()}
+            disabled ={disable}
+          ><img src={arrow_left} alt="arrow_right" /></button></div>}
+          <ProfileSlide profile={profileData[index]} visible={visible}/> 
+          {!unlockProfile &&          
+          <div className="switch_button"><button 
+            onClick={()=>handleSwitchNext()}
+            disabled={disable}
+          ><img  src={arrow_right} alt="arrow_right" /></button></div>}
+        </div>
+      }
       </div>
       <div className="footer">
         <IconButton 
